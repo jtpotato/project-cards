@@ -1,0 +1,19 @@
+name: Deploy To Workers
+run-name: ${{ github.actor }} is trying to deploy 🚀
+on:
+  push:
+    branches:
+     - main
+jobs:
+  deploy:
+    runs_on: ubuntu-latest
+    steps:
+      - name: Setup Bun
+        # You may pin to the exact commit or the version.
+        # uses: oven-sh/setup-bun@e900e6b10896cd3a94ded8f5d6094c6547532020
+        uses: oven-sh/setup-bun@v1.1.0
+      - name: Transpile and Build
+        run: bun run pt && bun run build
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3.1.0
+            
