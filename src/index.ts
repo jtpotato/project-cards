@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import template from "./template.txt";
 
 function hashCode(str: string) {
   let hash = 0;
@@ -13,9 +14,8 @@ function hashCode(str: string) {
 
 dayjs.extend(relativeTime)
 
-const server = Bun.serve({
-  port: 3000,
-  async fetch(request) {
+const handler = ({
+  async fetch(request: Request) {
     let params = new URL(request.url).searchParams;
     let project = params.get("project");
     let started = params.get("started");
@@ -29,8 +29,7 @@ const server = Bun.serve({
     // get age
     let age = dayjs(started).fromNow()
 
-    let file = Bun.file("./src/template.svg");
-    const text = await file.text();
+    let text = template;
 
     // templating
     let newSvg = text
@@ -49,4 +48,4 @@ const server = Bun.serve({
   },
 });
 
-console.log(`Listening on localhost: ${server.port}`);
+export default handler;

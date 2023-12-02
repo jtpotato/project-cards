@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="280">
+    <defs>
+        <linearGradient id="background-gradient" gradientTransform="rotate(45)">
+            <stop offset="0%" stop-color="{{start_color}}" />
+            <stop offset="100%" stop-color="{{stop_color}}" />
+        </linearGradient>
+
+        <filter id="nnnoise-filter" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox"
+            primitiveUnits="userSpaceOnUse" color-interpolation-filters="linearRGB">
+            <feTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='3' stitchTiles='stitch' />
+        </filter>
+    </defs>
+    <g>
+        <rect class="background" x="0" y="0" width="640" height="280" rx="15">
+        </rect>
+        <rect filter="url(#nnnoise-filter)" x="0" y="0" width="640" height="280" opacity="0.3" rx="15" />
+    </g>
+    <g>
+        <text x="40" y="70" style="">
+            Project
+        </text>
+        <text x="40" y="105" style="font-size: 32px; font-weight: bold;">
+            {{project_name}}
+        </text>
+        <text x="40" y="180" style="">
+            Started
+        </text>
+        <text x="40" y="205" style="font-size: 18px; font-weight: bold;">
+            {{start_date}}
+        </text>
+        <text x="200" y="180" style="">
+            Codename
+        </text>
+        <text x="200" y="205" style="font-size: 18px; font-weight: bold;">
+            {{codename}}
+        </text>
+        <text x="360" y="180" style="">
+            Age
+        </text>
+        <text x="360" y="205" style="font-size: 18px; font-weight: bold;">
+            {{age}}
+        </text>
+        <text x="455" y="265" style="font-family: monospace;" opacity="0.5">
+            jtpotato/project-cards
+        </text>
+    </g>
+
+    <style>
+        .background {
+            fill: url(#background-gradient);
+        }
+
+        * {
+            font-family: sans-serif;
+        }
+
+        text {
+            fill: white;
+        }
+    </style>
+</svg>

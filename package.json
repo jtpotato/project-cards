@@ -4,7 +4,9 @@
   "type": "module",
   "scripts": {
     "dev": "bun --hot run src/index.ts",
-    "serve": "bun run src/index.ts"
+    "serve": "bun run src/index.ts",
+    "pt": "cp src/template.svg src/template.txt",
+    "build": "bun build src/index.ts --outdir dist"
   },
   "devDependencies": {
     "bun-types": "latest"
