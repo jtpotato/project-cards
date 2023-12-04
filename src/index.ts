@@ -43,6 +43,7 @@ const handler = ({
     return new Response(newSvg, {
       headers: {
         "Content-Type": "image/svg+xml",
+        "Cache-Control": "max-age=86400"
       },
     });
   },
